@@ -1,4 +1,4 @@
-# mongoose-pagination-express
+# @mutabazia/mongoose-pagination-express
 
 A pagination library for use with **Express.js** and **Mongoose**, written in **TypeScript**.
 
