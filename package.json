@@ -1,0 +1,31 @@
+{
+  "name": "mongoose-pagination-express",
+  "version": "1.0.0",
+  "description": "A pagination library for use with Express.js and Mongoose, written in TypeScript.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MutabaziAlleluia/mongoose-pagination-express.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "typescript",
+    "node",
+    "express",
+    "pagination",
+    "database",
+    "mitabazia"
+  ],
+  "author": "Alleluia M.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MutabaziAlleluia/mongoose-pagination-express/issues"
+  },
+  "homepage": "https://github.com/MutabaziAlleluia/mongoose-pagination-express#readme"
+}
