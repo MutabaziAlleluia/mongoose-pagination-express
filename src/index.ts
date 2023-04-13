@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Aggregate, Query } from "mongoose";
+import { Aggregate as __Aggregate, Query as __Query } from "mongoose";
 import { getPage } from "./helpers/getPage";
 import { getPerPage } from "./helpers/getPerPage";
 import { Pagination, paginate } from "./helpers/paginate";
@@ -20,32 +20,40 @@ declare module "mongoose" {
   }
 }
 
-export const pagination = (req: Request, res: Response, next: NextFunction) => {
-  Query.prototype.paginate = function <Doc>(
-    per_page?: number | null
-  ): Promise<Pagination<Doc>> {
-    let current_page = getPage(req);
-    const turn_off = turnOff(req);
+export const pagination = <
+  Q extends typeof __Query,
+  A extends typeof __Aggregate
+>(
+  Query: Q,
+  Aggregate: A
+) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    Query.prototype.paginate = function <Doc>(
+      per_page?: number | null
+    ): Promise<Pagination<Doc>> {
+      let current_page = getPage(req);
+      const turn_off = turnOff(req);
 
-    if (turn_off) return this.exec();
+      if (turn_off) return this.exec();
 
-    if (!per_page) per_page = getPerPage(req);
-    else per_page = getPerPage(req, per_page);
-    return paginate(false, this, current_page, per_page);
+      if (!per_page) per_page = getPerPage(req);
+      else per_page = getPerPage(req, per_page);
+      return paginate(false, this, current_page, per_page);
+    };
+
+    Aggregate.prototype.paginate = function <Doc>(
+      per_page?: number | null
+    ): Promise<Pagination<Doc>> {
+      let current_page = getPage(req);
+      const turn_off = turnOff(req);
+
+      if (turn_off) return this.exec();
+
+      if (!per_page) per_page = getPerPage(req);
+      else per_page = getPerPage(req, per_page);
+      return paginate(true, this, current_page, per_page);
+    };
+
+    next();
   };
-
-  Aggregate.prototype.paginate = function <Doc>(
-    per_page?: number | null
-  ): Promise<Pagination<Doc>> {
-    let current_page = getPage(req);
-    const turn_off = turnOff(req);
-
-    if (turn_off) return this.exec();
-
-    if (!per_page) per_page = getPerPage(req);
-    else per_page = getPerPage(req, per_page);
-    return paginate(true, this, current_page, per_page);
-  };
-
-  next();
 };

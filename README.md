@@ -13,12 +13,13 @@ npm install @mutabazia/mongoose-pagination-express
 #### _Step 1_ - Import the **pagination** middleware and use it in your Express.js app:
 
 ```typescript
+import { Aggregate, Query } from "mongoose";
 import { pagination } from "@mutabazia/mongoose-pagination-express";
 
 const app = express();
 
 // ...
-app.use(pagination);
+app.use(pagination(Query, Aggregate));
 // ...
 ```
 
