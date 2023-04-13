@@ -1,6 +1,6 @@
 {
   "name": "@mutabazia/mongoose-pagination-express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A pagination library for use with Express.js and Mongoose, written in TypeScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,7 +24,7 @@
     "express",
     "pagination",
     "database",
-    "mitabazia"
+    "mutabazia"
   ],
   "author": "Alleluia M.",
   "license": "MIT",
