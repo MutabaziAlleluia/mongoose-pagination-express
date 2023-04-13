@@ -97,6 +97,10 @@ The **Pagination** interface represents the result of a paginated query. It has 
 - **last_page**: The last page number, or **null** if there is only one page.
 - **data**: An array of items in the current page.
 
+## Disclaimer
+
+This package was inspired by the [typeorm-pagination](https://www.npmjs.com/package/typeorm-pagination) package and some parts of the code were adapted from it. We thank the [typeorm-pagination](https://www.npmjs.com/package/typeorm-pagination) team for their work and contribution to the community.
+
 ## License
 
 This library is licensed under the [MIT License](https://opensource.org/licenses/MIT)
